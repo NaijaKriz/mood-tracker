@@ -1,7 +1,7 @@
-import { useAuth } from "@/context/AuthContext";
+
 import Dashboard from "../components/Dashboard";
-import Login from "../components/Login";
 import Main from "../components/Main";
+import Loading from "../components/Loading";
 
 
 export const metadata = {
@@ -9,24 +9,10 @@ export const metadata = {
 };
 
 export default function page(){
-    const {currentUser, loading} = useAuth()
-
-    let children = (
-        <Login />
-    )
-
-    if(loading){
-        
-    }
-
-    if (currentUser){
-        children = (
-            <Dashboard />
-        )
-    }
+    
     return(
         <Main>
-            {children}
+            <Dashboard />
         </Main>
     )
 }

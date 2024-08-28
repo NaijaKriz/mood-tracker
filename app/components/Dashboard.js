@@ -3,13 +3,15 @@ import React,{useEffect, useState} from 'react'
 import { Fugaz_One } from 'next/font/google';
 import Calendar from './Calendar';
 import { useAuth } from '@/context/AuthContext';
+import Loading from './Loading';
+import Login from "../components/Login";
 
 
 const fugaz = Fugaz_One({ subsets: ["latin"], weight:['400'] });
 
 export default function Dashboard() {
 
-    const{currentUser, userDataObj, setUserDataObj} = useAuth()
+    const{currentUser, userDataObj, setUserDataObj, loading} = useAuth()
     const [data, setData] = useState({})
 
     function countValues(){
@@ -68,6 +70,14 @@ export default function Dashboard() {
     }
     setData(userDataObj)
   }, [currentUser, userDataObj])
+
+    if(loading){
+      return<loading />
+    }
+
+    if(!currentUser){
+      return <Login />
+    }
 
   return (
     <div className = "flex flex-col flex-1 gap-8 sm:gap-12 md:gap-16">
