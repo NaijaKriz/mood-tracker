@@ -10,11 +10,15 @@ const dayList = ['Sunday', 'Monday', 'Teusday', 'Wednesday', 'Thursday', 'Friday
 
 
 export default function Calendar(props) {
-  const {demo, data, handleSetMood} = props
+  const {demo, completeData, handleSetMood} = props
 const now =  new Date()
 const currMonth = now.getMonth()
   const[selectedMonth, setSelectedMonth] = useState(Object.keys(months)[currMonth])
   const [selectedYear, setSelectedYear] = useState(now.getFullYear())
+
+
+  const numericMonth = Object.keys(months).indexOf(selectedMonth)
+  const data = completeData?.[selectedYear]?.[numericMonth] || {}
 
 
   
@@ -53,7 +57,7 @@ const currMonth = now.getMonth()
               return(
                 <div style={{background: color}} key={dayOfWeekIndex} 
                 className={`text-xs sm:text-sm border border-solid p-2 flex items-center gap-2 justify-between rounded-lg  
-                  ${isToday ? 'border-red-800 border-2xl' :
+                  ${isToday ? 'border-indigo-400 border-2xl' :
                  'border-indigo-100'} ${color === 'white' ? 'text-indigo-400' : 'text-white'}`}>
                   <p>{dayIndex}</p>
                 </div>
