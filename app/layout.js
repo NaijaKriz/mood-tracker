@@ -3,6 +3,7 @@ import "./globals.css";
 import Link from "next/link";
 import { AuthProvider } from "@/context/AuthContext";
 import Head from "./components/Head";
+import Logout from "./components/Logout"
 
 const opensans = Open_Sans({ subsets: ["latin"] });
 const fugaz = Fugaz_One({ subsets: ["latin"], weight:['400'] });
@@ -18,9 +19,7 @@ export default function RootLayout({ children }) {
       <Link href={'/'}>
       <h1 className={"text-base sm:text-lg textGradient text-slate-800 " + fugaz.className} >Mood</h1>
       </Link>
-      <div className="flex items-center justify-between">
-        PLACEHOLDER CTA || STATS
-      </div>
+      <Logout />
     </header>
   )
   const footer = (
